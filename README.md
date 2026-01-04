@@ -3,7 +3,18 @@
 
 ## 📌 Project Overview
 
-This project is a **web-based Rankine Cycle Visualizer** built using **FastAPI** for the backend and **HTML, CSS, JavaScript, and Plotly** for the frontend.
+This project is a web-based thermodynamic visualization tool developed to analyze the ideal Rankine cycle used in steam power plants.
+
+It computes the thermodynamic properties at key state points of the Rankine cycle and visualizes the process on:
+
+T–s (Temperature–Entropy) diagram
+
+P–v (Pressure–Specific Volume) diagram
+
+The project aligns with the Applied Thermodynamics assignment, specifically:
+
+“Review the provided Building APIs in Python and SQL Server Fundamental Tracks from Datacamp towards developing the frontend to visualize the T-s and P-v charts of the processes governed by the theoretical Rankine cycle for the different flow processes.”
+
 
 It allows users to:
 
@@ -46,19 +57,48 @@ The project visualizes these processes on:
 ## 🏗️ Project Architecture
 
 ```
-rankine_fastapi_assignment/
+rankine-cycle-app/
 │
-├── main.py                  # FastAPI backend
+├── main.py                  # FastAPI backend (API + thermodynamics logic)
 │
-├── static/                  # Static files (CSS & JS)
-│   ├── style.css
-│   └── script.js
+├── templates/
+│   └── index.html            # Frontend UI (HTML + Jinja2)
 │
-├── templates/               # HTML templates
-│   └── index.html
+├── static/
+│   ├── style.css             # CSS styling (can be customized)
+│   └── script.js             # JavaScript for API calls & charts
 │
-└── README.md                # Project documentation
+├── README.md                 # Project documentation
+│
+└── requirements.txt          # Python dependencies
+
 ```
+
+⚙️ Technologies Used
+
+# Backend
+
+Python 3.9+
+
+FastAPI
+
+CoolProp (thermodynamic property calculations)
+
+Uvicorn (ASGI server)
+
+
+
+# Frontend
+
+HTML5
+
+CSS3
+
+JavaScript
+
+Plotly.js (for T–s and P–v charts)
+
+
 
 ### 🔹 Backend (FastAPI)
 
@@ -80,22 +120,47 @@ rankine_fastapi_assignment/
 
 ---
 
-## ⚙️ Requirements
 
-Make sure you have:
 
-* **Python 3.9+**
-* pip installed
 
-### Install required Python packages:
 
-```bash
-pip install fastapi uvicorn
-```
 
-> Plotly is loaded via CDN in the browser (no installation needed).
 
----
+
+
+📦 Required Installations
+1️⃣ Python
+
+Make sure Python 3.9 or later is installed:
+
+python --version
+
+2️⃣ Create a Virtual Environment (Recommended)
+python -m venv venv
+
+
+Activate it:
+
+Windows
+
+venv\Scripts\activate
+
+
+Linux / macOS
+
+source venv/bin/activate
+
+3️⃣ Install Required Libraries
+
+Note: CoolProp is already used in this project.
+
+pip install fastapi uvicorn jinja2 coolprop plotly
+
+
+Or using requirements.txt:
+
+pip install -r requirements.txt
+
 
 ## ▶️ How to Run the Project
 
@@ -146,6 +211,16 @@ http://127.0.0.1:8000
    * Plot **P–v diagram**
 
 ---
+
+Visualization
+
+The charts produced are:
+
+T–s Diagram → entropy vs temperature
+
+P–v Diagram → pressure vs specific volume
+
+
 
 
 ## ✅ Academic Note
